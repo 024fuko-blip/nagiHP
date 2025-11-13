@@ -509,7 +509,6 @@ footer {
     width: 30px;
     height: 24px;
     position: relative;
-    z-index: 2000; /* メニューより手前に */
     /* ★ここを変更：数値をめちゃくちゃ大きくして最前面に固定する */
     z-index: 99999;
 }
