@@ -1,0 +1,514 @@
+/* ベーススタイルとリセット */
+:root {
+    --main-color: #388e3c; /* 落ち着いたグリーンのメインカラー */
+    --accent-color: #ffb300; /* 行動を促すための明るいオレンジ/イエローのアクセントカラー */
+    --text-color: #333333;
+    --background-color: #f7f7f7;
+    --white: #ffffff;
+    --header-height: 70px; /* 固定ヘッダーの高さ */
+    --border-radius: 1px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Klee One', 'Noto Sans JP', sans-serif;
+    color: var(--text-color);
+    line-height: 1.7;
+    background-color: var(--background-color);
+    scroll-behavior: smooth;
+    /* 固定ヘッダーの高さ分、コンテンツ全体を下にずらす */
+    padding-top: var(--header-height);
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-color);
+    transition: color 0.5s;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* 共通スタイル */
+.link-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--main-color);
+    color: var(--white);
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.4s;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    border: none;
+}
+
+.link-button:hover {
+    background-color: #2e7d32;
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+section {
+    padding: 60px 5%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.2rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--main-color);
+    border-bottom: 3px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+/* --- 固定ヘッダー（ナビゲーション） --- */
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* 最前面に表示 */
+}
+
+.header-inner {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 左寄せ */
+}
+
+.logo-fixed a img {
+    height: 60px; /* ロゴのサイズを調整 */
+    margin-right: 20px;
+}
+
+.company-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+
+/*ヒーローセクション(1画面表示)*/
+.hero{
+height:100vh;/*画面の高さいっぱい*/
+/*★↓ここに背景画像を指定してください*/
+background-image:url('Gemini_Generated_Image_4aa5f04aa5f04aa5.webp');
+background-size:cover;
+background-position:center;
+position:relative;/*スクロール矢印の基準*/
+/*中の文字(.hero-text)を上下左右の真ん中に配置します*/
+display:flex;
+justify-content:flex-end;/*水平・右寄せ*/
+align-items: flex-start; /*垂直・上寄せ*/
+padding:25vh 90px 0;/*.hero-textが端に寄りすぎないようにheroにパディングを追加*/
+box-sizing:border-box;/*パディングを幅に含める*/
+}
+/*浮き上がらせる文字（言葉）のスタイル*/
+.hero-text{
+text-align:right;/*文字を左揃えに*/
+}
+.hero-text h1{
+/*最小2rem、画面幅5%、最大3.5rem*/
+font-size:clamp(2rem,5vw,3.8rem);
+margin-bottom:15px;/*下に余白*/
+font-weight:bold;/*太字に*/
+color:black;/*★文字色を黒に*/
+text-shadow:none;/*★影をなしに*/
+}
+.hero-text p{
+font-size:2.0rem;
+color:black;/*★文字色を白に*/
+/*★重要：柔らかい影をつけます*/
+text-shadow:0px2px8px rgba(0,0,0,0.6);
+}
+.hero-text p{
+font-size:1.5rem;
+}
+/*スクロールダウンの矢印は省略します*/
+.scroll-down{
+/*必要であればスタイルを追加*/
+}
+/*キャッチコピーセクション*/
+.catchphrase-section{
+padding:100px 0;/*上下に余白*/
+background-color:var(--white);/*白背景*/
+}
+/*★h1のスタイル(外枠)*/
+.catchphrase-title{
+font-size:2.5rem;
+color:#333;/*文字色*/
+line-height:1.6;
+text-align:center;
+margin:0;/*h1のデフォルトマージンリセット*/
+}
+/*★h1の中のspan(fade-in-item)のスタイル*/
+.catchphrase-section .fade-in-item{
+display:block;/*spanをブロック要素にして改行*/
+}
+/*★キャッチコピーの時間差*/
+.catchphrase-section .fade-in-item:nth-child(2){
+transition-delay:0.5s;
+}
+.catchphrase-section .fade-in-item:nth-child(3){
+transition-delay:0.7s;
+}
+/*コンテンツセクション*/
+.content-section{
+padding:80px 0 ;
+background-color:#f9f9f9;/*薄いグレー背景*/
+}
+.container{
+width:90%;
+max-width:1000px;
+margin:0 auto;
+text-align:center;
+}
+/*アニメーションの準備(共通)*/
+.fade-in-item{
+opacity:0;/*★最初は透明*/
+transform:translateY(30px);/*★少し下に下げる*/
+transition:opacity 1s ease-out,transform 1s ease-out;
+}
+/*コンテンツセクションの文字スタイル*/
+.content-section .fade-in-item{
+font-size:1.2rem;
+line-height:2;
+color:#333;
+}
+/*コンテンツセクションの時間差*/
+.content-section .fade-in-item:nth-child(2){transition-delay:0.2s;}
+.content-section .fade-in-item:nth-child(3){transition-delay:0.4s;}
+.content-section .fade-in-item:nth-child(4){transition-delay:0.6s;}
+.content-section .fade-in-item:nth-child(5){transition-delay:0.8s;}
+.content-section .fade-in-item:nth-child(6){transition-delay:1.0s;}
+.content-section .fade-in-item:nth-child(7){transition-delay:1.2s;}
+/*★JSによってこのクラスが付くと表示される*/
+.fade-in-item.is-visible{
+opacity:1;
+transform:translateY(0);
+}
+/*スクロール矢印(おまけ)*/
+.scroll-down{
+position:absolute;
+bottom:30px;
+left:50%;
+width:20px;
+height:20px;
+border-left:3px solid white;
+border-bottom:3px solid white;
+transform:translateX(-50%) rotate(-45deg);
+animation:bounce 2s infinite;
+}
+/*矢印のアニメーション*/
+@keyframes bounce{
+0%,20%,50%,80%,100%{transform:translate(-50%,0) rotate(-45deg);}
+40%{transform:translate(-50%,-15px) rotate(-45deg);}
+60%{transform:translate(-50%,-8px) rotate(-45deg);}
+}
+/* --- 事業内容セクション --- */
+.business {
+    background-color: var(--white);
+}
+
+.business-container {
+    /* 常に3列横並びを基本とする */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.business-item {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.4s;
+}
+
+.business-item:hover {
+    transform: translateY(-5px);
+}
+
+.business-photo {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+}
+
+.business-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.business-item:hover .business-photo img {
+    transform: scale(1.05);
+}
+
+/*見出しと文章を横並びにする箱*/
+.business .section-header{
+display:flex;
+align-items:center;/*上下の中心を揃える*/
+gap:30px;/*見出しと文章の間隔*/
+margin-bottom:40px;/*下のカードとの余白*/
+flex-wrap:wrap;/*スマホなどで狭くなったら折り返す*/
+}
+/*既存のh2の余白をリセット（必要であれば）*/
+.business .section-header h2{
+margin-bottom:0;/*見出しの下余白をなくす*/
+}
+/*横に添える文章のスタイル*/
+.business .section-header .sub-text{
+margin:0;/*文章の余白をなくす*/
+font-size:0.9rem;/*少し小さめにする（お好みで）*/
+color:#333;/*文字色*/
+}
+
+.business-item p {
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    min-height: 50px;
+}
+
+/* --- 採用情報セクション --- */
+.careers {
+background-color: var(--background-color);
+}
+.careers-lead {
+text-align: center;
+font-size: 1.1rem;
+margin-bottom: 40px;
+color: var(--main-color);
+font-weight: bold;
+}
+.careers-container {
+display: flex;
+justify-content: center;
+gap: 20px;
+flex-wrap: wrap;
+}
+
+/* 1. カードデザイン */
+.careers-item {
+background-color: var(--white); /* 背景白地 */
+padding: 25px;
+border-radius: 8px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 影 */
+display: flex;
+flex-direction: column;
+text-align: center;
+min-height: 300px;
+width: 350px;
+}
+
+.careers-item h3 {
+margin: 0;
+font-size: 1.25rem;
+color: var(--main-color);
+margin-bottom: 5px;
+}
+.job-description {
+font-size: 0.9rem;
+margin-bottom: 15px;
+flex-grow: 1;
+margin-bottom: 20px; /* タグとの間の余白 */
+}
+
+/*「募集中」のタグ*/
+.recruitment-status{
+padding:6px 14px;
+border-radius:4px;
+font-weight:bold;
+color:var(--white);
+width:fit-content;
+font-size:0.85rem;
+margin-bottom:20px;
+letter-spacing:0.05em;
+margin-left:auto;
+margin-right:auto;
+}
+
+/* ★★★ この2つを追加 ★★★ */
+.status-open {
+  background-color: var(--accent-color); /* サイトで設定している黄色 */
+}
+.status-closed {
+  background-color: #9e9e9e; /* グレー */
+}
+
+/* 3. 分かりやすい応募ボタン（緑の塗り） */
+.apply-button {
+font-size: 0.9rem;
+padding: 10px 15px;
+white-space: nowrap;
+width: 90%; /* カードの横幅いっぱいで分かりやすい */
+text-align: center; /* ボタン内の文字は中央 */
+}
+
+/*募集終了時のボタン(非表示・場所は確保)*/
+.disabled-button{
+visibility:hidden;/*★見えなくするが、場所は確保する*/
+pointer-events:none;/*クリック無効(変更なし)*/
+cursor:not-allowed;/*カーソル変更(変更なし)*/
+}
+
+/* --- アクセスマップ / お問い合わせ / フッター (変更なし) --- */
+.access {
+    background-color: var(--white);
+}
+
+.map-container {
+    max-width: 900px;
+    height: 400px;
+    margin: 0 auto;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.contact {
+    text-align: center;
+    padding-bottom: 70px;
+}
+
+footer {
+    background-color: var(--main-color);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.8rem;
+}
+
+/* --- レスポンシブ対応 --- */
+@media (max-width: 1200px) {
+    /* 採用情報: 4列横並びが厳しくなったら2列に */
+    .careers-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    /* 事業内容: 3列横並びが厳しくなったら2列に */
+    .business-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* スマホ対応の調整 */
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    /* 事業内容: 1列（縦並び）に */
+    .business-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 採用情報: 1列（縦並び）に */
+    .careers-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 固定ヘッダーの調整 */
+    .sticky-header {
+        height: 60px; /* 高さを縮小 */
+    }
+    body {
+        padding-top: 60px;
+    }
+    .logo-fixed a img {
+        height: 40px;
+    }
+    .company-name {
+        font-size: 1.2rem;
+    }
+
+    .hero {
+        min-height: 50vh;
+    }
+    
+    /* 採用情報カード（スマホ縦並び時）のレイアウト安定化 */
+    .careers-item {
+        min-height: auto; /* スマホでは高さを自動調整に戻す */
+        padding: 20px;
+    }
+    .job-description {
+        margin-bottom: 15px;
+    }
+    .recruitment-status {
+        /* スマホで他の要素と混ざらないようにブロック要素として独立させる */
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        box-sizing: border-box; /* paddingを含めた幅計算 */
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 40px 5%;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+/* セクション見出しを中央揃え */
+section h2 {
+    text-align: center;
+}
+
+/* 採用情報のリード文を中央揃え */
+.careers-lead {
+    text-align: center;
+}
+
+/* 事業内容と採用情報の各アイテム内を中央揃え */
+.business-item,
+.careers-item {
+    text-align: center;
+}
+
+/* お問い合わせセクション内を中央揃え */
+.contact {
+    text-align: center;
+}
