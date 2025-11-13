@@ -11,68 +11,92 @@
 </head>
 <body>
 
-    <header class="contact-header">
-        <div class="logo">
-            <a href="index.html">
-                <img src="logo_0000350401.webp" alt="なぎの木ロゴ">
-            </a>
-        </div>
-    </header>
+    <header class="sticky-header">
+<div class="header-inner">
+<div class="logo-fixed">
+<a href="index.html">
+<img src="logo_0000350401.webp" alt="ロゴ">
+<span class="company-name">合同会社なぎの木</span>
+</a>
+</div>
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<nav class="global-nav" id="global-nav">
+<ul>
+<li><a href="index.html">ホーム</a></li>
+<li><a href="company.html">なぎの木について</a></li>
+<li><a href="#business">事業内容</a></li>
+<li><a href="#careers">採用情報</a></li>
+<li><a href="contact.html" class="nav-btn">お問い合わせ</a></li>
+</ul>
+</nav>
+</div>
+</header>
 
     <main class="contact-main">
-        <section class="contact-form-section">
-            <h2>お問い合わせフォーム</h2>
-            <p>ご質問やご相談など、お気軽にお問い合わせください。内容を確認後、担当者よりご連絡させていただきます。</p>
+        <section class="contact-container">
+            <h2 class="page-title">お問い合わせフォーム</h2>
+            <p class="lead-text">
+                ご質問やご相談など、お気軽にお問い合わせください。<br>
+                内容を確認後、担当者よりご連絡させていただきます。
+            </p>
 
-            <form id="contact-form" class="contact-form">
-                <div class="form-group">
-                    <label for="name">お名前 <span class="required">（必須）</span></label>
+            <form action="thanks.html" method="post" class="contact-form">
+                
+                <div class="form-item">
+                    <label for="name">お名前<span class="required">（必須）</span></label>
                     <input type="text" id="name" name="name" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">メールアドレス <span class="required">（必須）</span></label>
+                <div class="form-item">
+                    <label for="email">メールアドレス<span class="required">（必須）</span></label>
                     <input type="email" id="email" name="email" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="subject">件名 <span class="required">（必須）</span></label>
+                <div class="form-item">
+                    <label for="subject">件名<span class="required">（必須）</span></label>
                     <input type="text" id="subject" name="subject" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="message">お問い合わせ内容 <span class="required">（必須）</span></label>
+                <div class="form-item align-top">
+                    <label for="message">お問い合わせ内容<span class="required">（必須）</span></label>
                     <textarea id="message" name="message" rows="8" required></textarea>
                 </div>
 
-                <div class="form-group">
-                    <button type="submit" class="submit-button">送信</button>
+                <div class="form-submit">
+                    <button type="submit">送信</button>
                 </div>
-            </form>
 
+            </form>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 合同会社なぎの木</p>
+    <footer class="site-footer">
+        <div class="inner">
+            <small>&copy; 合同会社なぎの木</small>
+        </div>
     </footer>
-
-    <script>
-        // JavaScriptのコード
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-
-            const mailtoLink = 'kosake@naginoki-root.com'
-                             + '?subject=' + encodeURIComponent(subject)
-                             + '&body=' + encodeURIComponent('お名前: ' + name + '\n\n' + 'メールアドレス: ' + email + '\n\n' + 'お問い合わせ内容: ' + message);
-
-            window.location.href = mailtoLink;
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('global-nav');
+    
+    if(hamburger) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
         });
-    </script>
+    }
+
+    const navLinks = document.querySelectorAll('.global-nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if(hamburger) hamburger.classList.remove('active');
+            if(nav) nav.classList.remove('active');
+        });
+    });
+</script>
 </body>
 </html>

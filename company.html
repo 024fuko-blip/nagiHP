@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会社概要・沿革 | 合同会社なぎの木</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="sticky-header">
+        <div class="header-inner">
+            <div class="logo-fixed">
+                <a href="index.html">
+                    <img src="logo_0000350401.webp" alt="ロゴ">
+                    <span class="company-name">合同会社なぎの木</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="global-nav" id="global-nav">
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="company.html">なぎの木について</a></li>
+                    <li><a href="index.html#business">事業内容</a></li>
+                    <li><a href="index.html#careers">採用情報</a></li>
+                    <li><a href="contact.html" class="nav-btn">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="company-section">
+            <div class="section-content"> <h2 class="section-title">会社概要</h2>
+            <div class="table-container">
+                <table class="info-table">
+                    <tbody>
+                        <tr>
+                            <th>会社名</th>
+                            <td>合同会社なぎの木</td>
+                        </tr>
+                        <tr>
+                            <th>法人番号</th>
+                            <td>91600030001120</td>
+                        </tr>
+                        <tr>
+                            <th>所在地</th>
+                            <td>〒520-0113<br>滋賀県大津市坂本一丁目１８－４５</td>
+                        </tr>
+                        <tr>
+                            <th>設立</th>
+                            <td>平成26年 7月25日</td>
+                        </tr>
+                         <tr>
+                            <th>代表者</th>
+                            <td>猪飼英也</td>
+                        </tr>
+                        <tr>
+                            <th>事業内容</th>
+                            <td>
+                                訪問看護事業<br>
+                                就労継続支援事業<br>
+                                相談支援事業
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div></section>
+
+        <section class="history-section">
+            <h2>沿革</h2>
+            <div class="history-container">
+                <dl class="history-list">
+                    <div class="history-row">
+                        <dt>平成26年10月</dt>
+                        <dd>合同会社なぎの木設立<br>
+                            訪問看護ステーションひまり開設</dd>
+                    </div>
+                    <div class="history-row">
+                        <dt>平成28年9月</dt>
+                        <dd>訪問看護ステーションひまり京都西開設</dd>
+                    </div>
+                    <div class="history-row">
+                        <dt>平成30年4月</dt>
+                        <dd>就労継続支援B型事業所イロハニトイロ開設</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <small>&copy; 合同会社なぎの木</small>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('global-nav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

@@ -1,4 +1,6 @@
-/* ベーススタイルとリセット */
+/* ==========================================================================
+   1. ベーススタイルとリセット設定
+   ========================================================================== */
 :root {
     --main-color: #388e3c; /* 落ち着いたグリーンのメインカラー */
     --accent-color: #ffb300; /* 行動を促すための明るいオレンジ/イエローのアクセントカラー */
@@ -36,17 +38,22 @@ a:hover {
     color: var(--accent-color);
 }
 
-/* 共通スタイル */
+/* ==========================================================================
+   2. 共通パーツ・基本タグ設定
+   ========================================================================== */
 .link-button {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 15px 60px; /* 少しボタンを大きくして押しやすく */
     background-color: var(--main-color);
     color: var(--white);
-    border-radius: 50px;
+    
+    /* ★ここを変更（四角くおしゃれに） */
+    border-radius: 4px; 
+    
     font-weight: bold;
     transition: background-color 0.3s, transform 0.4s;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 10px rgba(56, 142, 60, 0.3); /* 影も少し緑色っぽくしておしゃれに */
     border: none;
 }
 
@@ -58,8 +65,6 @@ a:hover {
 
 section {
     padding: 60px 5%;
-    max-width: 1500px;
-    margin: 0 auto;
 }
 
 h1 {
@@ -85,8 +90,16 @@ h3 {
     margin-bottom: 10px;
     color: var(--text-color);
 }
+/* 追加するコード */
+.section-content {
+    max-width: 1200px; /* コンテンツの最大幅をここで指定 */
+    margin: 0 auto;    /* 中央寄せ */
+    padding: 0 20px;   /* 左右の余白（必要に応じて調整） */
+}
 
-/* --- 固定ヘッダー（ナビゲーション） --- */
+/* ==========================================================================
+   3. ヘッダー（固定ナビゲーション・ロゴ）
+   ========================================================================== */
 .sticky-header {
     position: fixed;
     top: 0;
@@ -105,148 +118,150 @@ h3 {
     padding: 0 5%;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* 左寄せ */
+    justify-content: space-between; /* ロゴとメニューを左右に配置 */
+}
+
+/* ロゴと文字の並び設定 */
+.logo-fixed a {
+    display: flex;           /* 横並びにする */
+    align-items: center;     /* 上下中央揃え */
+    text-decoration: none;   /* 下線なし */
+    height: 100%;            /* 高さ確保 */
 }
 
 .logo-fixed a img {
-    height: 60px; /* ロゴのサイズを調整 */
-    margin-right: 20px;
+    height: 50px;            /* ロゴ画像の高さ */
+    margin-right: 15px;      /* 文字との間隔 */
+    width: auto;             /* 比率維持 */
+    display: block;          /* 画像の隙間対策 */
 }
 
 .company-name {
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--main-color);
+    white-space: nowrap;     /* 改行禁止 */
+    margin: 0;               /* 余白リセット */
+    line-height: 1;          /* 行間を詰めてズレ防止 */
+    padding-bottom: 2px;     /* 微調整 */
 }
 
+/* ==========================================================================
+   4. ヒーローセクション（トップ画像・キャッチコピー）
+   ========================================================================== */
+.hero {
+    height: 100vh;
+    background-image: url('Gemini_Generated_Image_4aa5f04aa5f04aa5.webp');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 垂直方向も中央に */
+    box-sizing: border-box;
+}
 
-/*ヒーローセクション(1画面表示)*/
-.hero{
-height:100vh;/*画面の高さいっぱい*/
-/*★↓ここに背景画像を指定してください*/
-background-image:url('Gemini_Generated_Image_4aa5f04aa5f04aa5.webp');
-background-size:cover;
-background-position:center;
-position:relative;/*スクロール矢印の基準*/
-/*中の文字(.hero-text)を上下左右の真ん中に配置します*/
-display:flex;
-justify-content:flex-end;/*水平・右寄せ*/
-align-items: flex-start; /*垂直・上寄せ*/
-padding:25vh 90px 0;/*.hero-textが端に寄りすぎないようにheroにパディングを追加*/
-box-sizing:border-box;/*パディングを幅に含める*/
+/* 浮き上がらせる文字（言葉）のスタイル */
+.hero-text {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4); /* 透過度0.4 */
+    padding: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15vh; /* 画面の高さの15%分、上にずらす */
 }
-/*浮き上がらせる文字（言葉）のスタイル*/
-.hero-text{
-text-align:right;/*文字を左揃えに*/
+
+.hero-text h1 {
+    font-size: clamp(1.8rem, 5vw, 3.0rem);
+    margin-bottom: 0;
+    font-weight: bold;
+    color: black; /* 文字色黒 */
+    text-shadow: none;
+    line-height: 1.6;
 }
-.hero-text h1{
-/*最小2rem、画面幅5%、最大3.5rem*/
-font-size:clamp(2rem,5vw,3.8rem);
-margin-bottom:15px;/*下に余白*/
-font-weight:bold;/*太字に*/
-color:black;/*★文字色を黒に*/
-text-shadow:none;/*★影をなしに*/
+
+/* アニメーション設定 */
+.hero-text h1 .fade-in-item {
+    display: block; /* 改行させる */
+    opacity: 0;     /* 最初は透明 */
+    transform: translateY(30px); /* 少し下に */
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
-.hero-text p{
-font-size:2.0rem;
-color:black;/*★文字色を白に*/
-/*★重要：柔らかい影をつけます*/
-text-shadow:0px2px8px rgba(0,0,0,0.6);
+
+/* 2行目を遅らせる */
+.hero-text h1 .fade-in-item:nth-child(2) {
+    transition-delay: 1.3s;
 }
-.hero-text p{
-font-size:1.5rem;
+
+.hero-text h1 .fade-in-item.is-visible {
+    opacity: 1; 
+    transform: translateY(0); 
 }
-/*スクロールダウンの矢印は省略します*/
-.scroll-down{
-/*必要であればスタイルを追加*/
-}
-/*キャッチコピーセクション*/
+
+/* ==========================================================================
+   5. キャッチコピーセクション（文字のみのエリア）
+   ========================================================================== */
 .catchphrase-section{
-padding:100px 0;/*上下に余白*/
-background-color:var(--white);/*白背景*/
+    padding:100px 0;/*上下に余白*/
+    background-color:var(--white);/*白背景*/
 }
-/*★h1のスタイル(外枠)*/
 .catchphrase-title{
-font-size:2.5rem;
-color:#333;/*文字色*/
-line-height:1.6;
-text-align:center;
-margin:0;/*h1のデフォルトマージンリセット*/
+    font-size:2.5rem;
+    color:#333;/*文字色*/
+    line-height:1.6;
+    text-align:center;
+    margin:0;/*h1のデフォルトマージンリセット*/
 }
-/*★h1の中のspan(fade-in-item)のスタイル*/
 .catchphrase-section .fade-in-item{
-display:block;/*spanをブロック要素にして改行*/
+    display:block;/*spanをブロック要素にして改行*/
 }
-/*★キャッチコピーの時間差*/
+/* キャッチコピーの時間差 */
 .catchphrase-section .fade-in-item:nth-child(2){
-transition-delay:0.5s;
+    transition-delay:0.5s;
 }
 .catchphrase-section .fade-in-item:nth-child(3){
-transition-delay:0.7s;
+    transition-delay:0.7s;
 }
-/*コンテンツセクション*/
+
+/* ==========================================================================
+   6. コンテンツセクション（メッセージエリア）
+   ========================================================================== */
 .content-section{
-padding:80px 0 ;
-background-color:#f9f9f9;/*薄いグレー背景*/
+    padding:80px 0 ;
+    background-color:#f9f9f9;/*薄いグレー背景*/
 }
 .container{
-width:90%;
-max-width:1000px;
-margin:0 auto;
-text-align:center;
+    width:90%;
+    max-width:1000px;
+    margin:0 auto;
+    text-align:center;
 }
-/*アニメーションの準備(共通)*/
-.fade-in-item{
-opacity:0;/*★最初は透明*/
-transform:translateY(30px);/*★少し下に下げる*/
-transition:opacity 1s ease-out,transform 1s ease-out;
-}
-/*コンテンツセクションの文字スタイル*/
+/* コンテンツセクションの文字スタイル */
 .content-section .fade-in-item{
-font-size:1.2rem;
-line-height:2;
-color:#333;
+    font-size:1.2rem;
+    line-height:2;
+    color:#333;
 }
-/*コンテンツセクションの時間差*/
+/* コンテンツセクションの時間差 */
 .content-section .fade-in-item:nth-child(2){transition-delay:0.2s;}
 .content-section .fade-in-item:nth-child(3){transition-delay:0.4s;}
 .content-section .fade-in-item:nth-child(4){transition-delay:0.6s;}
 .content-section .fade-in-item:nth-child(5){transition-delay:0.8s;}
 .content-section .fade-in-item:nth-child(6){transition-delay:1.0s;}
 .content-section .fade-in-item:nth-child(7){transition-delay:1.2s;}
-/*★JSによってこのクラスが付くと表示される*/
-.fade-in-item.is-visible{
-opacity:1;
-transform:translateY(0);
-}
-/*スクロール矢印(おまけ)*/
-.scroll-down{
-position:absolute;
-bottom:30px;
-left:50%;
-width:20px;
-height:20px;
-border-left:3px solid white;
-border-bottom:3px solid white;
-transform:translateX(-50%) rotate(-45deg);
-animation:bounce 2s infinite;
-}
-/*矢印のアニメーション*/
-@keyframes bounce{
-0%,20%,50%,80%,100%{transform:translate(-50%,0) rotate(-45deg);}
-40%{transform:translate(-50%,-15px) rotate(-45deg);}
-60%{transform:translate(-50%,-8px) rotate(-45deg);}
-}
-/* --- 事業内容セクション --- */
+
+/* ==========================================================================
+   7. 事業内容セクション
+   ========================================================================== */
 .business {
     background-color: var(--white);
 }
 
 .business-container {
-    /* 常に3列横並びを基本とする */
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr); /* 均等な2列 */
+    gap: 40px;
+    max-width: 1000px; 
+    margin: 0 auto;
 }
 
 .business-item {
@@ -264,7 +279,7 @@ animation:bounce 2s infinite;
 
 .business-photo {
     width: 100%;
-    height: 200px;
+    height: 220px;
     overflow: hidden;
     border-radius: var(--border-radius);
     margin-bottom: 15px;
@@ -281,114 +296,128 @@ animation:bounce 2s infinite;
     transform: scale(1.05);
 }
 
-/*見出しと文章を横並びにする箱*/
-.business .section-header{
-display:flex;
-align-items:center;/*上下の中心を揃える*/
-gap:30px;/*見出しと文章の間隔*/
-margin-bottom:40px;/*下のカードとの余白*/
-flex-wrap:wrap;/*スマホなどで狭くなったら折り返す*/
+/* 見出しと文章を横並びにする箱 */
+.business .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
 }
-/*既存のh2の余白をリセット（必要であれば）*/
-.business .section-header h2{
-margin-bottom:0;/*見出しの下余白をなくす*/
+
+.business .section-header h2 {
+    margin-bottom: 0;
 }
-/*横に添える文章のスタイル*/
-.business .section-header .sub-text{
-margin:0;/*文章の余白をなくす*/
-font-size:0.9rem;/*少し小さめにする（お好みで）*/
-color:#333;/*文字色*/
+
+.business .section-header .sub-text {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #333;
 }
 
 .business-item p {
     margin-bottom: 20px;
-    font-size: 0.95rem;
-    min-height: 50px;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    min-height: auto;
 }
 
-/* --- 採用情報セクション --- */
+/* ==========================================================================
+   8. 採用情報セクション
+   ========================================================================== */
 .careers {
-background-color: var(--background-color);
-}
-.careers-lead {
-text-align: center;
-font-size: 1.1rem;
-margin-bottom: 40px;
-color: var(--main-color);
-font-weight: bold;
-}
-.careers-container {
-display: flex;
-justify-content: center;
-gap: 20px;
-flex-wrap: wrap;
+    background-color: var(--background-color);
 }
 
-/* 1. カードデザイン */
+.careers-lead {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.careers-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* カードデザイン */
 .careers-item {
-background-color: var(--white); /* 背景白地 */
-padding: 25px;
-border-radius: 8px;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 影 */
-display: flex;
-flex-direction: column;
-text-align: center;
-min-height: 300px;
-width: 350px;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-height: 300px;
+    width: calc(50% - 20px); /* 2列計算 */
+    max-width: 450px;
+    box-sizing: border-box;
 }
 
 .careers-item h3 {
-margin: 0;
-font-size: 1.25rem;
-color: var(--main-color);
-margin-bottom: 5px;
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--main-color);
+    margin-bottom: 10px;
 }
+
 .job-description {
-font-size: 0.9rem;
-margin-bottom: 15px;
-flex-grow: 1;
-margin-bottom: 20px; /* タグとの間の余白 */
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    flex-grow: 1;
+    margin-bottom: 20px;
+    line-height: 1.8;
 }
 
-/*「募集中」のタグ*/
+/*「募集中」タグ */
 .recruitment-status{
-padding:6px 14px;
-border-radius:4px;
-font-weight:bold;
-color:var(--white);
-width:fit-content;
-font-size:0.85rem;
-margin-bottom:20px;
-letter-spacing:0.05em;
-margin-left:auto;
-margin-right:auto;
+    padding:6px 14px;
+    border-radius:4px;
+    font-weight:bold;
+    color:var(--white);
+    width:fit-content;
+    font-size:0.85rem;
+    margin-bottom:20px;
+    letter-spacing:0.05em;
+    margin-left:auto;
+    margin-right:auto;
 }
-
-/* ★★★ この2つを追加 ★★★ */
 .status-open {
-  background-color: var(--accent-color); /* サイトで設定している黄色 */
+    background-color: var(--accent-color);
 }
 .status-closed {
-  background-color: #9e9e9e; /* グレー */
+    background-color: #9e9e9e;
 }
 
-/* 3. 分かりやすい応募ボタン（緑の塗り） */
+/* 応募ボタン */
 .apply-button {
-font-size: 0.9rem;
-padding: 10px 15px;
-white-space: nowrap;
-width: 90%; /* カードの横幅いっぱいで分かりやすい */
-text-align: center; /* ボタン内の文字は中央 */
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    white-space: nowrap;
+    width: 90%;
+    text-align: center;
+    
+    /* ★↓↓ これを追加・修正してください ↓↓ */
+    display: block;      /* ブロック要素として扱う */
+    margin: 10px auto 0; /* 上に10px、左右は自動(真ん中)、下は0 */
 }
 
-/*募集終了時のボタン(非表示・場所は確保)*/
 .disabled-button{
-visibility:hidden;/*★見えなくするが、場所は確保する*/
-pointer-events:none;/*クリック無効(変更なし)*/
-cursor:not-allowed;/*カーソル変更(変更なし)*/
+    visibility:hidden;
+    pointer-events:none;
+    cursor:not-allowed;
 }
-
-/* --- アクセスマップ / お問い合わせ / フッター (変更なし) --- */
+/* ==========================================================================
+   9. アクセスマップ・お問い合わせ・フッター
+   ========================================================================== */
 .access {
     background-color: var(--white);
 }
@@ -415,70 +444,192 @@ footer {
     font-size: 0.8rem;
 }
 
-/* --- レスポンシブ対応 --- */
-@media (max-width: 1200px) {
-    /* 採用情報: 4列横並びが厳しくなったら2列に */
-    .careers-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* ==========================================================================
+   10. ナビゲーション & ハンバーガーメニュー（詳細設定）
+   ========================================================================== */
+
+/* ナビゲーション（PC表示） */
+.global-nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 30px;
 }
 
-@media (max-width: 900px) {
-    /* 事業内容: 3列横並びが厳しくなったら2列に */
-    .business-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.global-nav a {
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 1rem;
+    position: relative;
 }
 
+/* ホバー時に下線が出るアニメーション */
+.global-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s;
+}
+.global-nav a:hover::after {
+    width: 100%;
+}
+
+/* お問い合わせボタン（メニュー内） */
+.global-nav .nav-btn {
+    background-color: var(--main-color);
+    color: var(--white);
+    padding: 12px 40px; /* 幅を少し広げて安定感を出す */
+    
+    /* ★ここが変更ポイント（四角くおしゃれに） */
+    border-radius: 4px; /* 50pxから4pxに変更（ほんの少し角を丸めると上品です） */
+    box-shadow: 0 4px 10px rgba(56, 142, 60, 0.3); /* 緑色のふんわりした影を追加 */
+    
+    transition: all 0.3s;
+}
+
+.global-nav .nav-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+    transform: translateY(-2px); /* ホバー時に少し浮き上がる */
+    box-shadow: 0 6px 15px rgba(255, 179, 0, 0.4); /* ホバー時の影（オレンジ色） */
+}
+
+.global-nav .nav-btn::after {
+    display: none; /* ボタンには下線をつけない */
+}
+
+/* ハンバーガーボタン（PCでは非表示） */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 2000; /* メニューより手前に */
+    /* ★ここを変更：数値をめちゃくちゃ大きくして最前面に固定する */
+    z-index: 99999;
+}
+.hamburger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--main-color);
+    border-radius: 3px;
+    transition: all 0.4s;
+}
+.hamburger span:nth-of-type(1) { top: 0; }
+.hamburger span:nth-of-type(2) { top: 10px; }
+.hamburger span:nth-of-type(3) { bottom: 0; }
+
+/* ハンバーガーが開いた時の動き */
+.hamburger.active span:nth-of-type(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+.hamburger.active span:nth-of-type(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-of-type(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   11. レスポンシブ対応（スマホ・タブレット向け）
+   ========================================================================== */
 @media (max-width: 768px) {
-    /* スマホ対応の調整 */
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    /* 事業内容: 1列（縦並び）に */
+    /* 事業内容 */
     .business-container {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
     
-    /* 採用情報: 1列（縦並び）に */
+    /* 採用情報 */
+    .careers-item {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 20px;
+    }
     .careers-container {
-        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
-    /* 固定ヘッダーの調整 */
+    /* スマホ用ヘッダー調整 */
     .sticky-header {
-        height: 60px; /* 高さを縮小 */
+        height: 60px;
     }
     body {
         padding-top: 60px;
     }
     .logo-fixed a img {
-        height: 40px;
+        height: 35px;
+        margin-right: 10px;
     }
     .company-name {
-        font-size: 1.2rem;
+        font-size: 1.0rem;
     }
 
-    .hero {
-        min-height: 50vh;
+    /* スマホ用メニュー */
+    .hamburger {
+        display: block;
+    }
+    .global-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        transition: right 0.4s ease;
+        z-index: 1500;
+        padding-top: 80px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    }
+    .global-nav.active {
+        right: 0;
+    }
+    .global-nav ul {
+        display: block;
+        padding: 0 30px;
+    }
+    .global-nav li {
+        margin-bottom: 25px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+    .global-nav .nav-btn {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
     }
     
-    /* 採用情報カード（スマホ縦並び時）のレイアウト安定化 */
-    .careers-item {
-        min-height: auto; /* スマホでは高さを自動調整に戻す */
+    /* ヒーローセクション文字 */
+    .hero-text {
         padding: 20px;
+        width: 90%;
     }
-    .job-description {
-        margin-bottom: 15px;
-    }
-    .recruitment-status {
-        /* スマホで他の要素と混ざらないようにブロック要素として独立させる */
+    
+    /* その他フォームなど */
+    .form-item {
         display: block;
+    }
+    .form-item label {
         width: 100%;
-        text-align: center;
-        margin-bottom: 10px;
-        box-sizing: border-box; /* paddingを含めた幅計算 */
+        display: block;
+        margin-bottom: 8px;
+    }
+    .form-item input,
+    .form-item textarea {
+        width: 100%;
+    }
+    .page-title {
+        font-size: 1.5rem;
+        width: 100%;
+        display: block;
+        min-width: auto;
     }
 }
 
@@ -486,29 +637,207 @@ footer {
     section {
         padding: 40px 5%;
     }
+}
 
-    .hero-content p {
-        font-size: 1rem;
+/* ==========================================================================
+   12. 会社概要・沿革（テーブル・リスト）
+   ========================================================================== */
+
+/* 会社概要（テーブルデザイン） */
+.table-container {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-x: auto; /* スマホではみ出したらスクロール */
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 4px; /* 角丸を追加 */
+    overflow: hidden;
+}
+
+.info-table th, .info-table td {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    vertical-align: top; /* 事業内容などが上揃えになります */
+}
+
+.info-table th {
+    width: 30%; /* ラベルの幅 */
+    background-color: #e8f5e9; /* 薄い緑の背景 */
+    color: var(--main-color);
+    font-weight: bold;
+    white-space: nowrap; /* 勝手な改行を防ぐ */
+    
+    /* ★ここを追加（文字を中央揃えにする） */
+    text-align: center !important; 
+    vertical-align: middle; /* 上下も真ん中にする */
+}
+
+/* 沿革（リストデザイン） */
+.history-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--accent-color); /* 左にオレンジの線 */
+}
+
+.history-row {
+    display: flex; /* 横並びにする */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.history-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.history-row dt {
+    font-weight: bold;
+    width: 120px;      /* 年月の幅を固定 */
+    min-width: 120px;  /* 縮まないようにする */
+    color: var(--main-color);
+}
+
+.history-row dd {
+    margin-left: 20px;
+    flex: 1; /* 残りの幅を使う */
+}
+
+/* スマホ対応（会社概要・沿革） */
+@media (max-width: 600px) {
+    /* 会社概要テーブルをスマホで見やすく */
+    .info-table th, .info-table td {
+        display: block; /* 縦並びにする */
+        width: 100%;
+    }
+    .info-table th {
+        background-color: #f0f0f0; /* 背景色を少し濃く */
+    }
+    
+    /* 沿革をスマホで見やすく */
+    .history-row {
+        display: block; /* 縦並びに */
+    }
+    .history-row dd {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+}
+/* ==========================================================================
+   お問い合わせフォーム（修正・おしゃれ化）
+   ========================================================================== */
+
+/* フォーム全体のコンテナ */
+.contact-form {
+    max-width: 700px;       /* 横幅を広げすぎない */
+    margin: 40px auto 0;    /* 中央寄せ */
+    padding: 40px;          /* 内側の余白 */
+    background-color: var(--white); /* 白背景 */
+    border-radius: 8px;     /* 角丸 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* ふんわりした影 */
+}
+
+/* 各項目のグループ（ラベルと入力欄のセット） */
+.form-item {
+    display: flex;          /* 横並びにする */
+    flex-direction: column; /* ★基本は縦並び（スマホファースト） */
+    margin-bottom: 25px;    /* 下の余白 */
+    text-align: left;       /* 左寄せ */
+}
+
+/* PCサイズ（768px以上）では横並びにする */
+@media (min-width: 768px) {
+    .form-item {
+        flex-direction: row; /* 横並びに変更 */
+        align-items: center; /* 上下中央揃え */
+    }
+    .form-item.align-top {
+        align-items: flex-start; /* テキストエリア用（上揃え） */
+    }
+    .form-item label {
+        width: 220px;       /* ラベル幅を固定 */
+        margin-bottom: 0;   /* 縦並び用の余白を消す */
+        margin-right: 20px; /* ラベルと入力欄の間隔 */
     }
 }
 
-/* セクション見出しを中央揃え */
-section h2 {
-    text-align: center;
+/* ラベル（項目名） */
+.form-item label {
+    font-weight: bold;
+    margin-bottom: 8px;     /* スマホ表示時の下余白 */
+    color: var(--main-color); /* 緑色にして統一感 */
 }
 
-/* 採用情報のリード文を中央揃え */
-.careers-lead {
-    text-align: center;
+/* 入力欄（テキスト・メール・テキストエリア共通） */
+.form-item input[type="text"],
+.form-item input[type="email"],
+.form-item textarea {
+    width: 100%;            /* 幅いっぱい */
+    padding: 15px;          /* 入力しやすい広さ */
+    border: 1px solid #ddd; /* 薄いグレーの枠線 */
+    border-radius: 4px;     /* 角丸 */
+    font-size: 1rem;
+    background-color: #fdfdfd; /* ほんのり明るい背景 */
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* 事業内容と採用情報の各アイテム内を中央揃え */
-.business-item,
-.careers-item {
-    text-align: center;
+/* 入力欄を選択したとき（フォーカス時） */
+.form-item input:focus,
+.form-item textarea:focus {
+    outline: none;
+    border-color: var(--main-color); /* 枠線を緑に */
+    box-shadow: 0 0 5px rgba(56, 142, 60, 0.2); /* 緑の光 */
 }
 
-/* お問い合わせセクション内を中央揃え */
-.contact {
+/* テキストエリアの高さ調整 */
+.form-item textarea {
+    resize: vertical;       /* 縦方向のみサイズ変更可 */
+    min-height: 150px;      /* 最低限の高さを確保 */
+}
+
+/* （必須）マーク */
+.required {
+    font-size: 0.75rem;
+    color: #e53935;         /* 赤色で目立たせる */
+    background-color: #ffebee;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* 送信ボタンエリア */
+.form-submit {
     text-align: center;
+    margin-top: 40px;
+}
+
+/* 送信ボタン本体 */
+.form-submit button {
+    background-color: var(--main-color);
+    color: var(--white);
+    border: none;
+    padding: 15px 80px;     /* 大きくて押しやすいサイズ */
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 4px;     /* 角丸四角 */
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(56, 142, 60, 0.3); /* 緑の影 */
+}
+
+.form-submit button:hover {
+    background-color: var(--accent-color); /* ホバー時はオレンジ */
+    transform: translateY(-2px);           /* 少し浮く */
+    box-shadow: 0 6px 15px rgba(255, 179, 0, 0.4); /* 影もオレンジ */
 }
