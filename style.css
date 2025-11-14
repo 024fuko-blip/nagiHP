@@ -780,6 +780,7 @@ footer {
 /* 入力欄（テキスト・メール・テキストエリア共通） */
 .form-item input[type="text"],
 .form-item input[type="email"],
+.form-item input[type="tel"],
 .form-item textarea {
     width: 100%;            /* 幅いっぱい */
     padding: 15px;          /* 入力しやすい広さ */
