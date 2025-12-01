@@ -732,112 +732,110 @@ footer {
         margin-top: 5px;
     }
 }
-/* ==========================================================================
-   お問い合わせフォーム（修正・おしゃれ化）
-   ========================================================================== */
-
-/* フォーム全体のコンテナ */
-.contact-form {
-    max-width: 700px;       /* 横幅を広げすぎない */
-    margin: 40px auto 0;    /* 中央寄せ */
-    padding: 40px;          /* 内側の余白 */
-    background-color: var(--white); /* 白背景 */
-    border-radius: 8px;     /* 角丸 */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* ふんわりした影 */
+/*==========================================================================*/
+/*お問い合わせフォーム（修正・おしゃれ化）*/
+/*==========================================================================*/
+/*フォーム本体(この設定に集約)*/
+.contact-form{
+max-width:700px;
+margin:40px auto 0;
+padding:40px;
+background-color:var(--white);
+border-radius:8px;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
 }
-
-/* 各項目のグループ（ラベルと入力欄のセット） */
-.form-item {
-    display: flex;          /* 横並びにする */
-    flex-direction: column; /* ★基本は縦並び（スマホファースト） */
-    margin-bottom: 25px;    /* 下の余白 */
-    text-align: left;       /* 左寄せ */
+/*各項目のグループ（ラベルと入力欄のセット）*/
+.form-item{
+display:flex;
+flex-direction:column;
+margin-bottom:25px;
+text-align:left;
 }
-
-/* PCサイズ（768px以上）では横並びにする */
-@media (min-width: 768px) {
-    .form-item {
-        flex-direction: row; /* 横並びに変更 */
-        align-items: center; /* 上下中央揃え */
-    }
-    .form-item.align-top {
-        align-items: flex-start; /* テキストエリア用（上揃え） */
-    }
-    .form-item label {
-        width: 220px;       /* ラベル幅を固定 */
-        margin-bottom: 0;   /* 縦並び用の余白を消す */
-        margin-right: 20px; /* ラベルと入力欄の間隔 */
-    }
+/*PCサイズ（768px以上）の設定ブロック内*/
+@media(min-width:768px){
+.form-item{
+flex-direction:row;
+align-items:center;
 }
-
-/* ラベル（項目名） */
-.form-item label {
-    font-weight: bold;
-    margin-bottom: 8px;     /* スマホ表示時の下余白 */
-    color: var(--main-color); /* 緑色にして統一感 */
+.form-item.align-top{
+align-items:flex-start;
 }
-
-/* 入力欄（テキスト・メール・テキストエリア共通） */
+.form-item label{
+width:220px;
+margin-bottom:0;
+margin-right:20px;
+}
+/*追加:入力欄が残りのスペースを埋めるようにする*/
 .form-item input[type="text"],
 .form-item input[type="email"],
 .form-item input[type="tel"],
-.form-item textarea {
-    width: 100%;            /* 幅いっぱい */
-    padding: 15px;          /* 入力しやすい広さ */
-    border: 1px solid #ddd; /* 薄いグレーの枠線 */
-    border-radius: 4px;     /* 角丸 */
-    font-size: 1rem;
-    background-color: #fdfdfd; /* ほんのり明るい背景 */
-    transition: border-color 0.3s, box-shadow 0.3s;
+.form-item textarea{
+flex-grow:1;
 }
-
-/* 入力欄を選択したとき（フォーカス時） */
+}
+/*ラベル（項目名）*/
+.form-item label{
+font-weight:bold;
+margin-bottom:8px;
+color:var(--main-color);
+}
+/*入力欄（テキスト・メール・テキストエリア共通）*/
+.form-item input[type="text"],
+.form-item input[type="email"],
+.form-item input[type="tel"],
+.form-item textarea{
+width:100%;
+padding:15px;
+border:1px solid #ddd;
+border-radius:4px;
+font-size:1rem;
+background-color:#fdfdfd;
+transition:border-color 0.3s,box-shadow 0.3s;
+}
+/*入力欄を選択したとき（フォーカス時）*/
 .form-item input:focus,
-.form-item textarea:focus {
-    outline: none;
-    border-color: var(--main-color); /* 枠線を緑に */
-    box-shadow: 0 0 5px rgba(56, 142, 60, 0.2); /* 緑の光 */
+.form-item textarea:focus{
+outline:none;
+border-color:var(--main-color);
+box-shadow:0 0 5px rgba(56,142,60,0.2);
 }
-
-/* テキストエリアの高さ調整 */
-.form-item textarea {
-    resize: vertical;       /* 縦方向のみサイズ変更可 */
-    min-height: 150px;      /* 最低限の高さを確保 */
+/*テキストエリアの高さ調整*/
+.form-item textarea{
+resize:vertical;
+min-height:150px;
 }
-
-/* （必須）マーク */
-.required {
-    font-size: 0.75rem;
-    color: #e53935;         /* 赤色で目立たせる */
-    background-color: #ffebee;
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin-left: 8px;
-    vertical-align: middle;
+/*（必須）マーク*/
+.required{
+    font-size:0.75rem;
+    color:#e53935;
+    background-color:#ffebee;
+    padding:2px 6px;
+    border-radius:4px;
+    margin-left:8px;
+    /* 修正: display を変更して、改行時の背景崩れを防ぐ */
+    display:inline-block; 
+    /* vertical-align:middle; は削除してもOK */
 }
-
-/* 送信ボタンエリア */
-.form-submit {
-    text-align: center;
-    margin-top: 40px;
+/*送信ボタンエリア*/
+.form-submit{
+text-align:center;
+margin-top:40px;
 }
-
-/* 送信ボタン本体 */
-.form-submit button {
-    background-color: var(--main-color);
-    color: var(--white);
-    border: none;
-    padding: 15px 80px;     /* 大きくて押しやすいサイズ */
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 4px;     /* 角丸四角 */
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 4px 10px rgba(56, 142, 60, 0.3); /* 緑の影 */
+/*送信ボタン本体*/
+.form-submit button{
+background-color:var(--main-color);
+color:var(--white);
+border:none;
+padding:15px 80px;
+font-size:1.1rem;
+font-weight:bold;
+border-radius:4px;
+cursor:pointer;
+transition:all 0.3s;
+box-shadow:0 4px 10px rgba(56,142,60,0.3);
 }
-
-.form-submit button:hover {
-    background-color: var(--accent-color); /* ホバー時はオレンジ */
-    transform: translateY(-2px);           /* 少し浮く */
-    box-shadow: 0 6px 15px rgba(255, 179, 0, 0.4); /* 影もオレンジ */
+.form-submit button:hover{
+background-color:var(--accent-color);
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(255,179,0,0.4);
 }
